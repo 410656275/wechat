@@ -1,0 +1,19 @@
+#配置文件环境选择
+spring:
+  profiles:
+    active: local
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database: mysql
+
+#模块名称
+server:
+  context-path: /wai
+
+#微信配置类参数 WechatConfig
+wechat:
+  token: stardream
+
+
