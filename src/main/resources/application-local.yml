@@ -6,7 +6,7 @@ spring:
     port: 6379
     password:
   datasource:
-    url: jdbc:mysql://127.0.0.1/wechat?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://127.0.0.1/wechat?useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
