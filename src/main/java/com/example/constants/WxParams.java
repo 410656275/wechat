@@ -18,10 +18,17 @@ public class WxParams {
     public static final String ACCESS_TOKEN = "access_token";
     public static final String EXPIRES_IN = "expires_in";
     public static final String SECRET = "secret";
+    //menu
     public static final String MENU = "menu";
     public static final String BUTTON = "button";
     public static final String MENUID = "menuid";
     public static final String IS_MENU_OPEN = "is_menu_open";
+    //tag
+    public static final String TAGS = "tags";
+    public static final String COUNT = "count";
+    public static final String TAG = "tag";
+    public static final String ID = "id";
+
 
 
     public static final String URL_APPID = "APPID";

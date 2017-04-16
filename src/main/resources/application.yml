@@ -10,7 +10,7 @@ spring:
 
 #模块名称
 server:
-  context-path: /wai
+  context-path: /wechat
 
 #微信配置类参数 WechatConfig
 wechat:
