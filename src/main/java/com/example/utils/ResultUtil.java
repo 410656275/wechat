@@ -91,7 +91,7 @@ public class ResultUtil {
     }
 
 
-    private static Result checkResult(String tags, boolean returnParams, String result) {
+    public static Result checkResult(String tags, boolean returnParams, String result) {
         if (result.contains(tags)){
             if (returnParams){
                 return ResultUtil.success(JSONObject.fromObject(result));

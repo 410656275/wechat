@@ -2,9 +2,8 @@ package com.example.controller;
 
 import com.example.constants.WxParams;
 import com.example.entity.Result;
-import com.example.entity.wechat.tag.TagDto;
-import com.example.entity.wechat.tag.TagMenberDto;
-import com.example.entity.wechat.tag.TagUserDto;
+import com.example.entity.wechat.user.RemarkDto;
+import com.example.entity.wechat.user.UserInfoDto;
 import com.example.service.WXUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,38 +21,33 @@ public class WXUserController {
     @Autowired
     private WXUserService wxUserService;
 
-    /** 查询标签列表 */
-    @GetMapping("tags/{appid}")
-    public Result getTags(@PathVariable String appid, HttpServletRequest request) throws IOException {
-        return wxUserService.getTags((String)request.getAttribute(WxParams.ACCESS_TOKEN));
-    }
-    /** 删除标签 */
-    @DeleteMapping("tags/{appid}")
-    public Result delTags(@PathVariable String appid, @RequestBody TagDto tag, HttpServletRequest request) throws IOException {
-        return wxUserService.delTags((String)request.getAttribute(WxParams.ACCESS_TOKEN),tag);
-    }
-    /** 新建标签 */
-    @PostMapping("tags/{appid}")
-    public Result addTags(@PathVariable String appid, @RequestBody TagDto tag, HttpServletRequest request) throws IOException {
-        return wxUserService.addTags((String)request.getAttribute(WxParams.ACCESS_TOKEN),tag);
-    }
-    /** 修改标签 */
-    @PutMapping("tags/{appid}")
-    public Result updateTags(@PathVariable String appid, @RequestBody TagDto tag, HttpServletRequest request) throws IOException {
-        return wxUserService.updateTags((String)request.getAttribute(WxParams.ACCESS_TOKEN),tag);
+
+
+    /** 获取用户身上的标签列表 */
+    @PostMapping("users/tags/{appid}")
+    public Result getTagsByUser(@PathVariable String appid, @RequestBody String openid, HttpServletRequest request) throws IOException {
+        return wxUserService.getTagsByUser((String)request.getAttribute(WxParams.ACCESS_TOKEN),openid);
     }
 
-    /** 获取标签下粉丝列表 */
-    @PostMapping("tags/users/{appid}")
-    public Result getUsersByTag(@PathVariable String appid, @RequestBody TagUserDto tagUserDto, HttpServletRequest request) throws IOException {
-        return wxUserService.getUsersByTag((String)request.getAttribute(WxParams.ACCESS_TOKEN),tagUserDto);
+    /** 设置用户备注名 */
+    @PostMapping("users/remark/{appid}")
+    public Result setUserRemark(@PathVariable String appid, @RequestBody RemarkDto remarkDto, HttpServletRequest request) throws IOException {
+        return wxUserService.setUserRemark((String)request.getAttribute(WxParams.ACCESS_TOKEN),remarkDto);
     }
 
-    /** 批量为用户打标签 */
-    @PostMapping("tags/members/{appid}")
-    public Result addUsersByTag(@PathVariable String appid, @RequestBody TagMenberDto tagMenberDto, HttpServletRequest request) throws IOException {
-        return wxUserService.addUsersByTag((String)request.getAttribute(WxParams.ACCESS_TOKEN),tagMenberDto);
+    /** 获取用户基本信息 */
+    @GetMapping("users/{appid}/{openid}")
+    public Result getUserInfo(@PathVariable String appid, @PathVariable String openid, HttpServletRequest request) throws IOException {
+        return wxUserService.getUserInfo((String)request.getAttribute(WxParams.ACCESS_TOKEN),openid);
     }
+
+    /** 批量获取用户基本信息 */
+    @PostMapping("users/{appid}")
+    public Result getUserInfoList(@PathVariable String appid, @PathVariable UserInfoDto userInfoDto, HttpServletRequest request) throws IOException {
+        return wxUserService.getUserInfoList((String)request.getAttribute(WxParams.ACCESS_TOKEN),userInfoDto);
+    }
+
+
 
 
 

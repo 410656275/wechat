@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import com.example.constants.WxErrorCode;
 import com.example.constants.WxParams;
 import com.example.entity.Result;
 import com.example.service.WXTokenService;
@@ -28,7 +27,8 @@ public class WXTokenController {
     /** 通过appid获取token */
     @GetMapping("{appid}")
     public Result getAppid(@PathVariable String appid, HttpServletRequest request) throws IOException {
-        return (Result) request.getAttribute(WxParams.ACCESS_TOKEN);
+
+        return ResultUtil.success(request.getAttribute(WxParams.ACCESS_TOKEN));
     }
 
     /** 刷新token */

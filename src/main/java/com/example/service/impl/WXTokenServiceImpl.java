@@ -1,13 +1,12 @@
 package com.example.service.impl;
 
 import com.example.constants.RedisConstants;
+import com.example.constants.WxAPI;
 import com.example.constants.WxErrorCode;
 import com.example.constants.WxParams;
 import com.example.entity.Result;
 import com.example.exception.MyException;
-import com.example.redis.RedisDao;
 import com.example.redis.StringRedisDao;
-import com.example.service.WXMenuService;
 import com.example.service.WXTokenService;
 import com.example.utils.HttpUtils;
 import com.example.utils.ResultUtil;
@@ -29,13 +28,11 @@ public class WXTokenServiceImpl implements WXTokenService{
 
     Logger logger = LoggerFactory.getLogger(WXTokenServiceImpl.class);
 
-    private final static String WECHAT_TOKEN="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET";
-
     @Autowired private StringRedisDao stringRedisDao;
 
     @Override
     public String getTokenSecret(String appid, String secret) throws IOException {
-        String url = WECHAT_TOKEN.replace(WxParams.URL_APPID,appid).replace(WxParams.URL_APPSECRET,secret);
+        String url = WxAPI.WECHAT_TOKEN.replace(WxParams.URL_APPID,appid).replace(WxParams.URL_APPSECRET,secret);
         String result = HttpUtils.httpGet(url);
         if (result.contains(WxParams.ACCESS_TOKEN)){
             JSONObject json = JSONObject.fromObject(result);

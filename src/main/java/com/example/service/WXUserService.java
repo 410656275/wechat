@@ -1,9 +1,8 @@
 package com.example.service;
 
 import com.example.entity.Result;
-import com.example.entity.wechat.tag.TagDto;
-import com.example.entity.wechat.tag.TagMenberDto;
-import com.example.entity.wechat.tag.TagUserDto;
+import com.example.entity.wechat.user.RemarkDto;
+import com.example.entity.wechat.user.UserInfoDto;
 
 import java.io.IOException;
 
@@ -13,21 +12,17 @@ import java.io.IOException;
  */
 public interface WXUserService {
 
-    /** 查询标签列表 */
-    Result getTags(String token) throws IOException;
 
-    /** 删除标签 */
-    Result delTags(String token, TagDto tag) throws IOException;
 
-    /** 新建标签 */
-    Result addTags(String token, TagDto tag) throws IOException;
+    /** 获取用户身上的标签列表 */
+    Result getTagsByUser(String token, String openid) throws IOException;
 
-    /** 修改标签 */
-    Result updateTags(String token, TagDto tag) throws IOException;
+    /** 设置用户备注名 */
+    Result setUserRemark(String token, RemarkDto remarkDto) throws IOException;
 
-    /** 获取标签下粉丝列表 */
-    Result getUsersByTag(String token, TagUserDto tagUserDto) throws IOException;
+    /** 获取用户基本信息 */
+    Result getUserInfo(String token, String openid) throws IOException;
 
-    /** 批量为用户打标签 */
-    Result addUsersByTag(String token, TagMenberDto tagMenberDto);
+    /** 批量获取用户基本信息 */
+    Result getUserInfoList(String token, UserInfoDto userInfoDto) throws IOException;
 }

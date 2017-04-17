@@ -1,12 +1,12 @@
 package com.example.service.impl;
 
-import com.example.constants.WxErrorCode;
+import com.example.constants.WxAPI;
 import com.example.constants.WxParams;
 import com.example.entity.Result;
-import com.example.entity.wechat.tag.TagDto;
-import com.example.entity.wechat.tag.TagMenberDto;
-import com.example.entity.wechat.tag.TagUserDto;
+import com.example.entity.wechat.user.RemarkDto;
+import com.example.entity.wechat.user.UserInfoDto;
 import com.example.service.WXUserService;
+import com.example.utils.HttpUtils;
 import com.example.utils.ResultUtil;
 import org.springframework.stereotype.Service;
 
@@ -19,66 +19,44 @@ import java.io.IOException;
 @Service
 public class WXUserServiceImpl implements WXUserService{
 
-    //微信标签接口组
-    private static final String WECHAT_TAG_GET="https://api.weixin.qq.com/cgi-bin/tags/get?access_token=ACCESS_TOKEN";
-    private static final String WECHAT_TAG_DEL="https://api.weixin.qq.com/cgi-bin/tags/delete?access_token=ACCESS_TOKEN";
-    private static final String WECHAT_TAG_ADD="https://api.weixin.qq.com/cgi-bin/tags/create?access_token=ACCESS_TOKEN";
-    private static final String WECHAT_TAG_UPDATE="https://api.weixin.qq.com/cgi-bin/tags/update?access_token=ACCESS_TOKEN";
-
-    //微信标签用户接口组
-    private static final String WECHAT_TAG_USER_GET="https://api.weixin.qq.com/cgi-bin/user/tag/get?access_token=ACCESS_TOKEN";
-
     @Override
-    public Result getTags(String token) throws IOException {
-        return getTags(WECHAT_TAG_GET,token,WxParams.TAGS);
+    public Result getTagsByUser(String token, String openid) throws IOException {
+        return getTagsByUser(WxAPI.WECHAT_USER_TAG_GET,token,openid,WxParams.TAGID_LIST,true);
     }
 
     @Override
-    public Result delTags(String token, TagDto tag) throws IOException {
-        return delTags(WECHAT_TAG_DEL,token,tag.toGson(),WxParams.OK,false);
+    public Result setUserRemark(String token, RemarkDto remarkDto) throws IOException {
+        return setUserRemark(WxAPI.WECHAT_USER_REMARK,token,remarkDto.toGson(),WxParams.OK,false);
     }
 
     @Override
-    public Result addTags(String token, TagDto tag) throws IOException {
-        return addTags(WECHAT_TAG_ADD,token,tag.toGson(),WxParams.ID,true);
+    public Result getUserInfo(String token, String openid) throws IOException {
+        return getUserInfo(token,openid,true);
     }
 
     @Override
-    public Result updateTags(String token, TagDto tag) throws IOException {
-        return updateTags(WECHAT_TAG_UPDATE,token,tag.toGson(),WxParams.OK,false);
-    }
-
-    @Override
-    public Result getUsersByTag(String token, TagUserDto tagUserDto) throws IOException {
-        return getUsersByTag(WECHAT_TAG_USER_GET,token,tagUserDto.toGson(),WxParams.COUNT,true);
-    }
-
-    @Override
-    public Result addUsersByTag(String token, TagMenberDto tagMenberDto) {
-        return null;
+    public Result getUserInfoList(String token, UserInfoDto userInfoDto) throws IOException {
+        return getUserInfoList(WxAPI.WECHAT_USER_INFO_LIST,token,userInfoDto.toGson(),WxParams.USER_INFO_LIST,true);
     }
 
     /** 内部方法 */
 
-    private Result getTags(String url, String token, String tags) throws IOException {
-        return ResultUtil.doGet(url,token,tags);
-    }
 
-    private Result delTags(String url, String token, String params, String tags,boolean returnParams) throws IOException {
+    private Result getTagsByUser(String url, String token, String params, String tags, boolean returnParams) throws IOException {
         return ResultUtil.doPost(url,token,params,tags,returnParams);
     }
 
-    private Result addTags(String url, String token, String params, String tags,boolean returnParams) throws IOException {
+    private Result setUserRemark(String url, String token, String params, String tags, boolean returnParams) throws IOException {
         return ResultUtil.doPost(url,token,params,tags,returnParams);
     }
 
-    private Result updateTags(String url, String token, String params, String tags,boolean returnParams) throws IOException {
-        return ResultUtil.doPost(url,token,params,tags,returnParams);
+    private Result getUserInfo(String token, String openid, boolean returnParams) throws IOException {
+        String result = HttpUtils.httpGet(WxAPI.WECHAT_USER_INFO.replace(WxParams.URL_ACCESS_TOKEN, token).replace(WxParams.URL_OPENID,openid));
+        return ResultUtil.checkResult(WxParams.SUBSCRIBE,returnParams,result);
     }
 
-    private Result getUsersByTag(String url, String token, String params, String tags,boolean returnParams) throws IOException {
+    private Result getUserInfoList(String url, String token, String params, String tags, boolean returnParams) throws IOException {
         return ResultUtil.doPost(url,token,params,tags,returnParams);
     }
-
 
 }

@@ -26,12 +26,17 @@ public class WxParams {
     //tag
     public static final String TAGS = "tags";
     public static final String COUNT = "count";
-    public static final String TAG = "tag";
     public static final String ID = "id";
+    public static final String TAGID_LIST = "tagid_list";
+
+    //user
+    public static final String SUBSCRIBE = "subscribe";
+    public static final String USER_INFO_LIST = "user_info_list";
 
 
 
     public static final String URL_APPID = "APPID";
     public static final String URL_APPSECRET = "APPSECRET";
     public static final String URL_ACCESS_TOKEN = "ACCESS_TOKEN";
+    public static final String URL_OPENID = "OPENID";
 }
