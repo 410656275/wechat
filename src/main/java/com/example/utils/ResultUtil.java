@@ -63,17 +63,17 @@ public class ResultUtil {
     }
 
     /** 微信get请求封装 */
-    public static Result doGet(String url, String token, String tags,WxErrorCode wxErrorCode) throws IOException {
+    public static Result doGet(String url, String token, String tags) throws IOException {
         String result = HttpUtils.httpGet(url.replace(WxParams.URL_ACCESS_TOKEN, token));
-        return checkResult(tags,true,result,wxErrorCode);
+        return checkResult(tags,true,result);
 
     }
 
-//    /** 微信get请求封装 */
-//    public static Result doGet(String url, String token, String tags,WxErrorCode wxErrorCode,boolean returnParams) throws IOException {
-//        String result = HttpUtils.httpGet(url.replace(WxParams.URL_ACCESS_TOKEN, token));
-//        return checkResult(tags,returnParams,result,wxErrorCode);
-//    }
+    /** 微信get请求封装 */
+    public static Result doGet(String url, String token, String tags,boolean returnParams) throws IOException {
+        String result = HttpUtils.httpGet(url.replace(WxParams.URL_ACCESS_TOKEN, token));
+        return checkResult(tags,returnParams,result);
+    }
 
     /**
      *  微信get请求封装
@@ -81,18 +81,17 @@ public class ResultUtil {
      * @param token
      * @param params
      * @param tags
-     * @param wxErrorCode
      * @param returnParams 是否返回微信接口数据  true：是 fales：否
      * @return
      * @throws IOException
      */
-    public static Result doPost(String url, String token,String params, String tags,WxErrorCode wxErrorCode,boolean returnParams) throws IOException {
+    public static Result doPost(String url, String token,String params, String tags,boolean returnParams) throws IOException {
         String result = HttpUtils.httpPost(url.replace(WxParams.URL_ACCESS_TOKEN, token),params);
-        return checkResult(tags,returnParams,result,wxErrorCode);
+        return checkResult(tags,returnParams,result);
     }
 
 
-    private static Result checkResult(String tags, boolean returnParams, String result, WxErrorCode wxErrorCode) {
+    private static Result checkResult(String tags, boolean returnParams, String result) {
         if (result.contains(tags)){
             if (returnParams){
                 return ResultUtil.success(JSONObject.fromObject(result));
@@ -100,7 +99,7 @@ public class ResultUtil {
                 return new Result();
             }
         }else {
-            throw new MyException(wxErrorCode, result);
+            throw new MyException(WxErrorCode.FAIL, result);
         }
     }
 

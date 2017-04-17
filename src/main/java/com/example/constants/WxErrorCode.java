@@ -7,13 +7,14 @@ package com.example.constants;
 public enum WxErrorCode {
 
     SUCCESS(0,"success"),
-    SYS_ERROR(-1,"系统错误"),
+    FAIL(-1,"fail"),
+    SYS_ERROR(-2,"系统错误"),
     SYS_ERROR_PARAMS(2000,"输入参数不合法"),
     SYS_ERROR_PARAMS_APPID(20101,"appid不合法"),
     WX_ERROR_TOKEN(10001,"获取微信token错误"),
-    WX_ERROR_GATEWAY(10002,"网关验证失败"),
-    WX_ERROR_MENU(10003,"菜单接口调用失败"),
-    WX_ERROR_TAG(10004,"标签接口调用失败"),
+//    WX_ERROR_GATEWAY(10002,"网关验证失败"),
+//    WX_ERROR_MENU(10003,"菜单接口调用失败"),
+//    WX_ERROR_TAG(10004,"标签接口调用失败"),
 
 
 //    CACHE_TOKEN(1,"非缓存中获取token"),

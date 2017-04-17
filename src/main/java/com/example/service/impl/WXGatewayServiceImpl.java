@@ -51,9 +51,7 @@ public class WXGatewayServiceImpl implements WXGatewayService{
                 return wxResponseService.deviceEventResponse(req);
             //事件处理
             case WechatConstants.MSG_TYPE_EVENT:
-
                 String event =req.getString(WechatConstants.MSG_NODE_EVENT);
-
                 switch (event){
                     //关注事件
                     case WechatConstants.MSG_TYPE_SUBSCRIBE:

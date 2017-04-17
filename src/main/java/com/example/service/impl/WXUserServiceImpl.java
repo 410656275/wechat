@@ -35,22 +35,22 @@ public class WXUserServiceImpl implements WXUserService{
 
     @Override
     public Result delTags(String token, TagDto tag) throws IOException {
-        return delTags(WECHAT_TAG_DEL,token,tag.toGson(),WxParams.OK);
+        return delTags(WECHAT_TAG_DEL,token,tag.toGson(),WxParams.OK,false);
     }
 
     @Override
     public Result addTags(String token, TagDto tag) throws IOException {
-        return addTags(WECHAT_TAG_ADD,token,tag.toGson(),WxParams.ID);
+        return addTags(WECHAT_TAG_ADD,token,tag.toGson(),WxParams.ID,true);
     }
 
     @Override
     public Result updateTags(String token, TagDto tag) throws IOException {
-        return updateTags(WECHAT_TAG_UPDATE,token,tag.toGson(),WxParams.OK);
+        return updateTags(WECHAT_TAG_UPDATE,token,tag.toGson(),WxParams.OK,false);
     }
 
     @Override
     public Result getUsersByTag(String token, TagUserDto tagUserDto) throws IOException {
-        return getUsersByTag(WECHAT_TAG_USER_GET,token,tagUserDto.toGson(),WxParams.COUNT);
+        return getUsersByTag(WECHAT_TAG_USER_GET,token,tagUserDto.toGson(),WxParams.COUNT,true);
     }
 
     @Override
@@ -61,23 +61,23 @@ public class WXUserServiceImpl implements WXUserService{
     /** 内部方法 */
 
     private Result getTags(String url, String token, String tags) throws IOException {
-        return ResultUtil.doGet(url,token,tags,WxErrorCode.WX_ERROR_TAG);
+        return ResultUtil.doGet(url,token,tags);
     }
 
-    private Result delTags(String url, String token, String params, String tags) throws IOException {
-        return ResultUtil.doPost(url,token,params,tags,WxErrorCode.WX_ERROR_TAG,false);
+    private Result delTags(String url, String token, String params, String tags,boolean returnParams) throws IOException {
+        return ResultUtil.doPost(url,token,params,tags,returnParams);
     }
 
-    private Result addTags(String url, String token, String params, String tags) throws IOException {
-        return ResultUtil.doPost(url,token,params,tags,WxErrorCode.WX_ERROR_TAG,true);
+    private Result addTags(String url, String token, String params, String tags,boolean returnParams) throws IOException {
+        return ResultUtil.doPost(url,token,params,tags,returnParams);
     }
 
-    private Result updateTags(String url, String token, String params, String tags) throws IOException {
-        return ResultUtil.doPost(url,token,params,tags,WxErrorCode.WX_ERROR_TAG,false);
+    private Result updateTags(String url, String token, String params, String tags,boolean returnParams) throws IOException {
+        return ResultUtil.doPost(url,token,params,tags,returnParams);
     }
 
-    private Result getUsersByTag(String url, String token, String params, String tags) throws IOException {
-        return ResultUtil.doPost(url,token,params,tags,WxErrorCode.WX_ERROR_TAG,true);
+    private Result getUsersByTag(String url, String token, String params, String tags,boolean returnParams) throws IOException {
+        return ResultUtil.doPost(url,token,params,tags,returnParams);
     }
 
 
