@@ -36,7 +36,7 @@ public class WXUserController {
     }
 
     /** 获取用户基本信息 */
-    @GetMapping("users/{appid}/{openid}")
+    @GetMapping("users/info/{appid}/{openid}")
     public Result getUserInfo(@PathVariable String appid, @PathVariable String openid, HttpServletRequest request) throws IOException {
         return wxUserService.getUserInfo((String)request.getAttribute(WxParams.ACCESS_TOKEN),openid);
     }
@@ -46,6 +46,14 @@ public class WXUserController {
     public Result getUserInfoList(@PathVariable String appid, @PathVariable UserInfoDto userInfoDto, HttpServletRequest request) throws IOException {
         return wxUserService.getUserInfoList((String)request.getAttribute(WxParams.ACCESS_TOKEN),userInfoDto);
     }
+
+    /** 获取用户列表 */
+    @GetMapping("users/{appid}")
+    public Result getUserList(@PathVariable String appid,String next_openid, HttpServletRequest request) throws IOException {
+        return wxUserService.getUserList((String)request.getAttribute(WxParams.ACCESS_TOKEN),next_openid);
+    }
+
+
 
 
 

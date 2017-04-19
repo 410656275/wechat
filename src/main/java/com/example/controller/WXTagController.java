@@ -17,48 +17,50 @@ import java.io.IOException;
  * Created by cc on 2017/4/17 0017.
  */
 @RestController
+@RequestMapping("tags")
 public class WXTagController {
 
     @Autowired
     private WXTagService wxTagService;
 
     /** 查询标签列表 */
-    @GetMapping("tags/{appid}")
+    @GetMapping("{appid}")
     public Result getTags(@PathVariable String appid, HttpServletRequest request) throws IOException {
         return wxTagService.getTags((String)request.getAttribute(WxParams.ACCESS_TOKEN));
     }
     /** 删除标签 */
-    @DeleteMapping("tags/{appid}")
+    @DeleteMapping("{appid}")
     public Result delTags(@PathVariable String appid, @RequestBody TagDto tag, HttpServletRequest request) throws IOException {
         return wxTagService.delTags((String)request.getAttribute(WxParams.ACCESS_TOKEN),tag);
     }
     /** 新建标签 */
-    @PostMapping("tags/{appid}")
+    @PostMapping("{appid}")
     public Result addTags(@PathVariable String appid, @RequestBody TagDto tag, HttpServletRequest request) throws IOException {
         return wxTagService.addTags((String)request.getAttribute(WxParams.ACCESS_TOKEN),tag);
     }
     /** 修改标签 */
-    @PutMapping("tags/{appid}")
+    @PutMapping("{appid}")
     public Result updateTags(@PathVariable String appid, @RequestBody TagDto tag, HttpServletRequest request) throws IOException {
         return wxTagService.updateTags((String)request.getAttribute(WxParams.ACCESS_TOKEN),tag);
     }
 
     /** 获取标签下粉丝列表 */
-    @PostMapping("tags/users/{appid}")
+    @PostMapping("users/{appid}")
     public Result getUsersByTag(@PathVariable String appid, @RequestBody TagUserDto tagUserDto, HttpServletRequest request) throws IOException {
         return wxTagService.getUsersByTag((String)request.getAttribute(WxParams.ACCESS_TOKEN),tagUserDto);
     }
 
     /** 批量为用户打标签 */
-    @PostMapping("tags/members/{appid}")
+    @PostMapping("members/{appid}")
     public Result addUsersByTag(@PathVariable String appid, @RequestBody TagMenberDto tagMenberDto, HttpServletRequest request) throws IOException {
         return wxTagService.addUsersByTag((String)request.getAttribute(WxParams.ACCESS_TOKEN),tagMenberDto);
     }
 
     /** 批量为用户取消标签 */
-    @DeleteMapping("tags/members/{appid}")
+    @DeleteMapping("members/{appid}")
     public Result delUsersByTag(@PathVariable String appid, @RequestBody TagMenberDto tagMenberDto, HttpServletRequest request) throws IOException {
         return wxTagService.delUsersByTag((String)request.getAttribute(WxParams.ACCESS_TOKEN),tagMenberDto);
     }
+
 
 }

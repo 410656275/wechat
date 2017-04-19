@@ -32,6 +32,7 @@ public class WxParams {
     //user
     public static final String SUBSCRIBE = "subscribe";
     public static final String USER_INFO_LIST = "user_info_list";
+    public static final String TOTAL = "total";
 
 
 
@@ -39,4 +40,5 @@ public class WxParams {
     public static final String URL_APPSECRET = "APPSECRET";
     public static final String URL_ACCESS_TOKEN = "ACCESS_TOKEN";
     public static final String URL_OPENID = "OPENID";
+    public static final String NEXT_OPENID = "NEXT_OPENID";
 }

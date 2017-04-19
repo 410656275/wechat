@@ -25,4 +25,7 @@ public interface WXUserService {
 
     /** 批量获取用户基本信息 */
     Result getUserInfoList(String token, UserInfoDto userInfoDto) throws IOException;
+
+    /** 获取用户列表 */
+    Result getUserList(String token, String next_openid) throws IOException;
 }
