@@ -6,7 +6,6 @@ import com.example.entity.table.Account;
 import com.example.exception.MyException;
 import com.example.service.WXCheckAppidService;
 import com.example.service.WXTokenService;
-import com.example.utils.ResultUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -35,7 +34,7 @@ public class WxAppidCheckAspect {
     private WXCheckAppidService wxCheckAppidService;
     @Autowired private WXTokenService wxTokenService;
 
-    @Pointcut("execution(* com.example.controller.WX*.*(..))&& !execution(* com.example.controller.WXTokenController.getAppidBySecret(..))")
+    @Pointcut("execution(* com.example.controller.WX*.*(..)) && !execution(* com.example.controller.WXTokenController.getAppidBySecret(..))")
     public void log(){}
 
     @Before(value="log()")

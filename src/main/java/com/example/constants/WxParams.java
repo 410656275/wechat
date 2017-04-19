@@ -34,6 +34,9 @@ public class WxParams {
     public static final String USER_INFO_LIST = "user_info_list";
     public static final String TOTAL = "total";
 
+    //share
+    public static final String TICKET = "ticket";
+
 
 
     public static final String URL_APPID = "APPID";

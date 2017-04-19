@@ -2,10 +2,9 @@ package com.example.controller;
 
 import com.example.entity.Result;
 import com.google.gson.Gson;
-import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by cc on 17-4-13.
@@ -19,5 +18,9 @@ public class TestController {
         Gson gson = new Gson();
         System.out.println(gson.toJson(opened_list));
         return null;
+    }
+
+    public static void main(String[] args) {
+
     }
 }

@@ -2,14 +2,12 @@ package com.example;
 
 import com.example.dao.repository.AccountRepository;
 import com.example.entity.table.Account;
-import com.example.redis.*;
-import com.google.gson.Gson;
+import com.example.redis.StringRedisDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.core.*;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
@@ -21,6 +19,9 @@ public class WechatDemoApplicationTests {
 
 	@Autowired
 	private AccountRepository accountRepository;
+
+	@Autowired
+	private StringRedisDao stringRedisDao;
 
 	@Before
 	public void before(){

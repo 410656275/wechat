@@ -43,4 +43,12 @@ public class WxAPI {
     public static final String WECHAT_BLACK_USER_LIST="https://api.weixin.qq.com/cgi-bin/tags/members/getblacklist?access_token=ACCESS_TOKEN";
     public static final String WECHAT_BLACK_USER_ADD="https://api.weixin.qq.com/cgi-bin/tags/members/batchblacklist?access_token=ACCESS_TOKEN";
     public static final String WECHAT_BLACK_USER_DEL="https://api.weixin.qq.com/cgi-bin/tags/members/batchunblacklist?access_token=ACCESS_TOKEN";
+
+    //微信推广相关接口
+    public static final String WECHAT_SHARE_QRCODE="https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=ACCESS_TOKEN";
+    public static final String WECHAT_SHARE_SHOW_QRCODE="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=TICKET";
+
+
+
+
 }
