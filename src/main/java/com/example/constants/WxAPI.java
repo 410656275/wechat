@@ -47,6 +47,35 @@ public class WxAPI {
     //微信推广相关接口
     public static final String WECHAT_SHARE_QRCODE="https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=ACCESS_TOKEN";
     public static final String WECHAT_SHARE_SHOW_QRCODE="https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=TICKET";
+    public static final String WECHAT_SHARE_SORT_URL="https://api.weixin.qq.com/cgi-bin/shorturl?access_token=ACCESS_TOKEN";
+
+    //微信数据统计
+        //用户分析数据接口
+    public static final String WECHAT_STATISTICS_USER_SUMMARY="https://api.weixin.qq.com/datacube/getusersummary?access_token=ACCESS_TOKEN";//获取用户增减数据  7
+    public static final String WECHAT_STATISTICS_USER_CUMULATE="https://api.weixin.qq.com/datacube/getusercumulate?access_token=ACCESS_TOKEN";//获取累计用户数据  7
+
+        //图文分析数据接口
+    public static final String WECHAT_STATISTICS_ARTICLES_SUMMARY="https://api.weixin.qq.com/datacube/getarticlesummary?access_token=ACCESS_TOKEN";//获取图文群发每日数据  1
+    public static final String WECHAT_STATISTICS_ARTICLES_TOTAL="https://api.weixin.qq.com/datacube/getarticletotal?access_token=ACCESS_TOKEN";//获取图文群发总数据  1
+    public static final String WECHAT_STATISTICS_ARTICLES_READ="https://api.weixin.qq.com/datacube/getuserread?access_token=ACCESS_TOKEN";//获取图文统计数据  3
+    public static final String WECHAT_STATISTICS_ARTICLES_READ_HOUR="https://api.weixin.qq.com/datacube/getuserreadhour?access_token=ACCESS_TOKEN";//获取图文统计分时数据  1
+    public static final String WECHAT_STATISTICS_ARTICLES_SHARE="https://api.weixin.qq.com/datacube/getusershare?access_token=ACCESS_TOKEN";//获取图文分享转发数据  7
+    public static final String WECHAT_STATISTICS_ARTICLES_SHARE_HOUR="https://api.weixin.qq.com/datacube/getusersharehour?access_token=ACCESS_TOKEN";//获取图文分享转发分时数据  1
+
+
+        //消息分析数据接口
+    public static final String WECHAT_STATISTICS_MSG="https://api.weixin.qq.com/datacube/getupstreammsg?access_token=ACCESS_TOKEN";//获取消息发送概况数据 7
+    public static final String WECHAT_STATISTICS_MSG_HOUR="https://api.weixin.qq.com/datacube/getupstreammsghour?access_token=ACCESS_TOKEN";//获取消息分送分时数据 1
+    public static final String WECHAT_STATISTICS_MSG_WEEK="https://api.weixin.qq.com/datacube/getupstreammsgweek?access_token=ACCESS_TOKEN";//获取消息发送周数据 30
+    public static final String WECHAT_STATISTICS_MSG_MONTH="https://api.weixin.qq.com/datacube/getupstreammsgmonth?access_token=ACCESS_TOKEN";//获取消息发送月数据 30
+    public static final String WECHAT_STATISTICS_MSG_DIST="https://api.weixin.qq.com/datacube/getupstreammsgdist?access_token=ACCESS_TOKEN";//获取消息发送分布数据 15
+    public static final String WECHAT_STATISTICS_MSG_DIST_WEEK="https://api.weixin.qq.com/datacube/getupstreammsgdistweek?access_token=ACCESS_TOKEN";//获取消息发送分布周数据 30
+    public static final String WECHAT_STATISTICS_MSG_DIST_MONTH="https://api.weixin.qq.com/datacube/getupstreammsgdistmonth?access_token=ACCESS_TOKEN";//获取消息发送分布月数据 30
+
+        //接口分析数据接口
+    public static final String WECHAT_STATISTICS_INTERFACE_SUMMARY="https://api.weixin.qq.com/datacube/getinterfacesummary?access_token=ACCESS_TOKEN";//获取接口分析数据 30
+    public static final String WECHAT_STATISTICS_INTERFACE_SUMMARY_HOUR="https://api.weixin.qq.com/datacube/getinterfacesummaryhour?access_token=ACCESS_TOKEN";//获取接口分析分时数据 1
+
 
 
 

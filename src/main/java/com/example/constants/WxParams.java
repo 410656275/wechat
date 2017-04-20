@@ -38,6 +38,10 @@ public class WxParams {
     public static final String TICKET = "ticket";
 
 
+    //statistics
+    public static final String LIST = "list";
+
+
 
     public static final String URL_APPID = "APPID";
     public static final String URL_APPSECRET = "APPSECRET";

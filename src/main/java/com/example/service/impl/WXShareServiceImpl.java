@@ -4,6 +4,7 @@ import com.example.constants.WxAPI;
 import com.example.constants.WxErrorCode;
 import com.example.constants.WxParams;
 import com.example.entity.Result;
+import com.example.entity.wechat.share.SortUrlDto;
 import com.example.entity.wechat.share.TicketDto;
 import com.example.redis.StringRedisDao;
 import com.example.service.WXShareService;
@@ -29,10 +30,18 @@ public class WXShareServiceImpl implements WXShareService {
         return getTicket(WxAPI.WECHAT_SHARE_QRCODE,token,ticketDto);
     }
 
+    @Override
+    public Result getSorturl(String token, SortUrlDto sortUrlDto) throws IOException {
+        return getSorturl(WxAPI.WECHAT_SHARE_SORT_URL,token,sortUrlDto);
+    }
+
+
+
     private Result getTicket(String url, String token, TicketDto ticketDto) throws IOException {
         //1.换取ticket
         Result result =  ResultUtil.doPost(url,token,ticketDto.toGson(), WxParams.TICKET,true);
 
+        //2.缓存redis
         if (result.getCode() == WxErrorCode.SUCCESS.getCode()){
             String type = ticketDto.getAction_name();
             String key;
@@ -55,4 +64,9 @@ public class WXShareServiceImpl implements WXShareService {
 
 
     }
+
+    private Result getSorturl(String url, String token, SortUrlDto sortUrlDto) throws IOException {
+        return ResultUtil.doPost(url,token,sortUrlDto.toGson(),WxParams.OK,true);
+    }
+
 }
