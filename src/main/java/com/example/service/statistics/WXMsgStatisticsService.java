@@ -28,4 +28,5 @@ public interface WXMsgStatisticsService {
 
     /** 获取消息发送分布月数据 */
     Result getMsgDistMonth(String token, StatisticsSearchDto statisticsSearchDto) throws IOException;
+
 }

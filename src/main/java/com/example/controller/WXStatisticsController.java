@@ -111,6 +111,15 @@ public class WXStatisticsController {
     public Result getMsgDistMonth(@PathVariable String appid, @RequestBody StatisticsSearchDto statisticsSearchDto, HttpServletRequest request) throws IOException {
         return wxMsgStatisticsService.getMsgDistMonth((String)request.getAttribute(WxParams.ACCESS_TOKEN),statisticsSearchDto);
     }
-    /**  */
+    /** 获取接口分析数据 */
+    @PostMapping("interface/summary/{appid}")
+    public Result getInterfaceSummary(@PathVariable String appid, @RequestBody StatisticsSearchDto statisticsSearchDto, HttpServletRequest request) throws IOException {
+        return wxInterfaceStatisticsService.getInterfaceSummary((String)request.getAttribute(WxParams.ACCESS_TOKEN),statisticsSearchDto);
+    }
 
+    /** 获取接口分析分时数据 */
+    @PostMapping("interface/summary/hour/{appid}")
+    public Result getInterfaceSummaryHour(@PathVariable String appid, @RequestBody StatisticsSearchDto statisticsSearchDto, HttpServletRequest request) throws IOException {
+        return wxInterfaceStatisticsService.getInterfaceSummaryHour((String)request.getAttribute(WxParams.ACCESS_TOKEN),statisticsSearchDto);
+    }
 }

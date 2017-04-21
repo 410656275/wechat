@@ -52,6 +52,7 @@ public class WXMsgStatisticsServiceImpl implements WXMsgStatisticsService{
         return getMsgDistMonth(WxAPI.WECHAT_STATISTICS_MSG_DIST_MONTH,token,statisticsSearchDto);
     }
 
+
     /** 内部方法 */
     private Result getMsg(String url, String token, StatisticsSearchDto statisticsSearchDto) throws IOException {
         return ResultUtil.doPost(url,token,statisticsSearchDto.toGson(), WxParams.LIST,true);
@@ -80,5 +81,6 @@ public class WXMsgStatisticsServiceImpl implements WXMsgStatisticsService{
     private Result getMsgDistMonth(String url, String token, StatisticsSearchDto statisticsSearchDto) throws IOException {
         return ResultUtil.doPost(url,token,statisticsSearchDto.toGson(), WxParams.LIST,true);
     }
+
 
 }
